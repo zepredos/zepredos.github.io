@@ -18,13 +18,16 @@ export function renderBoot(root: HTMLElement): void {
 
   const buttons = [...root.querySelectorAll<HTMLButtonElement>("button[data-destination]")];
   const select = (index: number) => buttons.forEach((btn, i) => btn.classList.toggle("selected", i === index));
-  const bootSelected = () => {
-    const selected = buttons.find((btn) => btn.classList.contains("selected")) ?? buttons[0];
-    if (selected.dataset.destination === "nekoweb") {
+  const boot = (destination?: string) => {
+    if (destination === "nekoweb") {
       window.location.assign(nekowebUrl);
       return;
     }
     navigate("/main");
+  };
+  const bootSelected = () => {
+    const selected = buttons.find((btn) => btn.classList.contains("selected")) ?? buttons[0];
+    boot(selected.dataset.destination);
   };
 
   const onKey = (event: KeyboardEvent) => {
@@ -40,6 +43,15 @@ export function renderBoot(root: HTMLElement): void {
       bootSelected();
     }
   };
+
+  buttons.forEach((button) => {
+    button.addEventListener("pointerup", (event) => {
+      if (event.pointerType !== "touch") return;
+      event.preventDefault();
+      boot(button.dataset.destination);
+    });
+  });
+
   window.addEventListener("keydown", onKey);
   (root as HTMLElement & { _bootKey?: (event: KeyboardEvent) => void })._bootKey = onKey;
 }

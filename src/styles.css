@@ -281,6 +281,11 @@ button, a { font: inherit; }
 .grub button.selected::before { content: "*"; }
 .grub-help { color: #a9a9a9; font-size: clamp(.8rem, 1.5vw, 1rem); line-height: 1.35; margin: 2rem 3rem 0; }
 
+@media (pointer: coarse) {
+  .grub-menu { pointer-events: auto; }
+  .grub button { touch-action: manipulation; }
+}
+
 @media (max-width: 700px) {
   .pro { padding: 1rem 1rem 3rem; }
   .pro-header { align-items: flex-start; }
