@@ -1,6 +1,6 @@
 import { navigate } from "../app/router";
 
-const nekowebUrl = "https://nekoweb.org/";
+const nekowebUrl = "https://zepredos.nekoweb.org/";
 
 export function renderBoot(root: HTMLElement): void {
   root.innerHTML = `
