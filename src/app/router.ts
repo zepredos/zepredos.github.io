@@ -5,8 +5,8 @@ export type Route =
 export function parsePath(pathname: string): Route {
   const path = pathname.replace(/\/+$/, "") || "/";
   if (path === "/") return { name: "boot" };
-  if (path === "/professional") return { name: "professional", page: "home" };
-  const pro = path.match(/^\/professional\/(about|projects|cv|blog)(?:\/([^/]+))?$/);
+  if (path === "/main") return { name: "professional", page: "home" };
+  const pro = path.match(/^\/main\/(about|projects|cv|blog)(?:\/([^/]+))?$/);
   if (pro) return { name: "professional", page: pro[1], id: pro[2] };
   return { name: "boot" };
 }

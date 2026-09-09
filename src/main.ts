@@ -25,6 +25,10 @@ function unmountOneko(): void {
 }
 
 function mount(): void {
+  if (/^\/professional(?:\/|$)/.test(location.pathname)) {
+    const mainPath = location.pathname.replace(/^\/professional/, "/main");
+    history.replaceState(null, "", `${mainPath}${location.search}${location.hash}`);
+  }
   const route = parsePath(location.pathname);
 
   if (route.name === "boot") {

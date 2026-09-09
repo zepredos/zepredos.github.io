@@ -8,7 +8,7 @@ export function renderBoot(root: HTMLElement): void {
       <section class="grub" aria-label="GRUB mode select">
         <p class="grub-title">GNU GRUB version 2.67</p>
         <div class="grub-menu" role="menu" aria-label="Boot entries">
-          <button type="button" role="menuitem" tabindex="-1" data-destination="professional" class="selected">zep's website</button>
+          <button type="button" role="menuitem" tabindex="-1" data-destination="main" class="selected">zep's website</button>
           <button type="button" role="menuitem" tabindex="-1" data-destination="nekoweb">zep's nekoweb website</button>
         </div>
         <p class="grub-help">Use the ↑ and ↓ keys to select which entry is highlighted.<br />Press enter to boot the selected destination.</p>
@@ -24,7 +24,7 @@ export function renderBoot(root: HTMLElement): void {
       window.location.assign(nekowebUrl);
       return;
     }
-    navigate("/professional");
+    navigate("/main");
   };
 
   const onKey = (event: KeyboardEvent) => {

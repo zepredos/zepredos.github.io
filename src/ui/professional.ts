@@ -8,10 +8,10 @@ import { escapeHtml, renderBody, setMeta } from "../app/html";
 import { navigate, type Route } from "../app/router";
 
 const nav = [
-  { href: "/professional", label: "Home" },
-  { href: "/professional/about", label: "About" },
-  { href: "/professional/projects", label: "Projects" },
-  { href: "/professional/blog", label: "Technical Blogs" },
+  { href: "/main", label: "Home" },
+  { href: "/main/about", label: "About" },
+  { href: "/main/projects", label: "Projects" },
+  { href: "/main/blog", label: "Technical Blogs" },
 ];
 
 export function renderProfessional(root: HTMLElement, route: Extract<Route, { name: "professional" }>): void {
@@ -19,7 +19,7 @@ export function renderProfessional(root: HTMLElement, route: Extract<Route, { na
   root.innerHTML = `
     <div class="pro">
       <header class="pro-header">
-        <a class="pro-mark" href="/professional">
+        <a class="pro-mark" href="/main">
           <img src="/assets/pink-pixel-avatar.png" alt="" width="40" height="40" />
           <span>${escapeHtml(site.name)}</span>
         </a>
@@ -30,7 +30,7 @@ export function renderProfessional(root: HTMLElement, route: Extract<Route, { na
                 `<a href="${item.href}" ${isActive(page, item.href) ? 'aria-current="page"' : ""}>${item.label}</a>`,
             )
             .join("")}
-          <a href="/professional/cv" ${isActive(page, "/professional/cv") ? 'aria-current="page"' : ""}>Work Experience</a>
+          <a href="/main/cv" ${isActive(page, "/main/cv") ? 'aria-current="page"' : ""}>Work Experience</a>
           <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
             <span aria-hidden="true">◐</span><span class="theme-label">Dark</span>
           </button>
@@ -69,8 +69,8 @@ function updateThemeToggle(toggle: HTMLButtonElement | null, isDark: boolean): v
 }
 
 function isActive(page: string, href: string): boolean {
-  if (href === "/professional") return page === "home";
-  return href === `/professional/${page}`;
+  if (href === "/main") return page === "home";
+  return href === `/main/${page}`;
 }
 
 function pageHtml(route: Extract<Route, { name: "professional" }>): string {
@@ -92,7 +92,7 @@ function pageHtml(route: Extract<Route, { name: "professional" }>): string {
         setMeta(`${project.title} — ${site.name}`, project.description);
         return `
           <article>
-            <p><a class="back-link" href="/professional/projects">← projects</a></p>
+            <p><a class="back-link" href="/main/projects">← projects</a></p>
             <h1>${escapeHtml(project.title)}</h1>
             <p class="muted">${escapeHtml(project.status)}${project.date ? ` · ${escapeHtml(project.date)}` : ""}</p>
             <p>${escapeHtml(project.description)}</p>
@@ -111,7 +111,7 @@ function pageHtml(route: Extract<Route, { name: "professional" }>): string {
             .map(
               (project) => `
             <li>
-              <a href="/professional/projects/${project.id}">
+              <a href="/main/projects/${project.id}">
                 <strong>${escapeHtml(project.title)}</strong>
                 <span class="muted">${escapeHtml(project.status)}</span>
                 <p>${escapeHtml(project.description)}</p>
@@ -159,7 +159,7 @@ function pageHtml(route: Extract<Route, { name: "professional" }>): string {
         setMeta(`${post.title} — ${site.name}`, post.excerpt);
         return `
           <article class="post">
-            <p><a class="back-link" href="/professional/blog">← technical blogs</a></p>
+            <p><a class="back-link" href="/main/blog">← technical blogs</a></p>
             <h1>${escapeHtml(post.title)}</h1>
             <p class="muted">${escapeHtml(post.date)} · ${post.tags.map(escapeHtml).join(", ")}</p>
             ${renderBody(post.body)}
@@ -173,7 +173,7 @@ function pageHtml(route: Extract<Route, { name: "professional" }>): string {
             .map(
               (post) => `
             <li>
-              <a href="/professional/blog/${post.slug}">
+              <a href="/main/blog/${post.slug}">
                 <strong>${escapeHtml(post.title)}</strong>
                 <span class="muted">${escapeHtml(post.date)}</span>
                 <p>${escapeHtml(post.excerpt)}</p>
