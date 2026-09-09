@@ -1,7 +1,6 @@
 import "./styles.css";
 import { parsePath } from "./app/router";
 import { setMeta } from "./app/html";
-import { site } from "./site";
 import { renderBoot, unbindBoot } from "./ui/boot";
 import { renderProfessional } from "./ui/professional";
 
@@ -30,7 +29,7 @@ function mount(): void {
 
   if (route.name === "boot") {
     unmountOneko();
-    setMeta(`${site.name} — boot`, "Choose a destination.");
+    setMeta("zep's website", "Choose a destination.");
     renderBoot(app);
     return;
   }
