@@ -9,7 +9,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
+html, body { margin: 0; min-height: 100%; max-width: 100%; overflow-x: hidden; background: var(--paper); color: var(--ink); }
 #app { min-height: 100dvh; }
 button, a { font: inherit; }
 .hidden { display: none !important; }
@@ -108,7 +108,8 @@ button, a { font: inherit; }
 .pro-nav a[aria-current="page"] { transform: none; box-shadow: 3px 3px 0 var(--pro-ink); }
 .pro-nav a:active, .theme-toggle:active { transform: translate(3px, 3px); box-shadow: none; }
 .theme-toggle { gap: .35rem; }
-.pro-main { max-width: 51rem; margin: 0 auto; padding-top: 4rem; }
+.pro-main { max-width: 51rem; min-width: 0; margin: 0 auto; padding-top: 4rem; }
+.pro-main :is(p, li, h1, h2, h3) { overflow-wrap: anywhere; }
 .pro-main h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.08em; font-weight: 700; margin: 0 0 1rem; }
 .pro-main h2 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
 .pro-main :not(pre) > p, .pro-main li { line-height: 1.75; }
@@ -287,9 +288,29 @@ button, a { font: inherit; }
 }
 
 @media (max-width: 700px) {
-  .pro { padding: 1rem 1rem 3rem; }
-  .pro-header { align-items: flex-start; }
-  .pro-nav { flex: none; justify-content: flex-start; }
-  .pro-main { padding-top: 2.4rem; }
-  .hero-home { margin-top: 1rem; }
+  .pro { padding: .9rem .9rem 2.75rem; }
+  .pro-header { align-items: flex-start; gap: 1rem; }
+  .pro-mark img { width: 2.5rem; height: 2.5rem; }
+  .pro-nav {
+    flex: 1 1 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .6rem;
+  }
+  .pro-nav a, .theme-toggle {
+    min-width: 0;
+    min-height: 2.7rem;
+    justify-content: center;
+    padding: .5rem .35rem;
+    font-size: .72rem;
+    line-height: 1.15;
+    text-align: center;
+  }
+  .pro-main { width: 100%; padding-top: 2.25rem; }
+  .hero-home { margin-top: .5rem; }
+  .hero-avatar { width: 5rem; height: 5rem; margin-bottom: 1.2rem; }
+  .home-actions { gap: .6rem; margin-top: 1.6rem; }
+  .home-actions .button { flex: 1 1 calc(50% - .6rem); justify-content: center; margin: 0; }
+  .grub-help { margin-inline: 0; }
 }
