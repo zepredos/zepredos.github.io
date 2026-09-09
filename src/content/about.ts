@@ -1,5 +1,5 @@
 export const about = {
-  body: `i am anmol; online i go by zep. i’m a 19 year old comp sci student in his junior year. i love creating and am especially passionate about compilers, web infrastructure and embedded systems.
+  body: `i’m a 19 year old comp sci student in his junior year. i love creating and am especially passionate about compilers, web infrastructure and embedded systems.
 
 i have loved tech ever since i was 5 and saw a touch-screen tablet for the first time. i started messing around with it until i was the go to tech guy in the house despite my age.
 
