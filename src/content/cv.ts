@@ -17,7 +17,7 @@ export const cv: CvData = {
     "computer science student and software engineer interested in low-level programming, electronics, and practical systems. currently learning rust and contributing to rust-clippy.",
   experience: [
     {
-      org: "tejas ai (yc w25)",
+      org: "elip ai (yc w25)",
       role: "founding engineer",
       period: "aug 2025 - feb 2026",
       points: [
